@@ -1,5 +1,5 @@
 public class CreateBurgerCommand implements CommandInterface{
-    Burger burger;
+    private Burger burger;
 
     public CreateBurgerCommand(Burger burger) {
         this.burger= burger;
@@ -9,5 +9,8 @@ public class CreateBurgerCommand implements CommandInterface{
         burger.cookBurger();
     }
 
+    public Burger getBurger(){
+        return burger;
+    }
 
 }

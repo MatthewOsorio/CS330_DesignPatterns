@@ -1,19 +1,33 @@
-public class Waitress {
-    CommandInterface currentOrder;
-    String name;
+import java.util.ArrayList;
 
-    public Waitress(String name){
-        this.name= name;
+public class Waitress {
+    private ArrayList<CommandInterface> customerOrders;
+    private ShortOrderCook cook;
+
+    public Waitress(ShortOrderCook cook){
+        this.cook= cook;
+        customerOrders= new ArrayList<CommandInterface>();
     }
 
     public void takeOrder(CommandInterface order){
-        currentOrder = order;
-        createOrder();
+        customerOrders.addLast(order);
     }
 
-    public void createOrder(){
-        System.out.println(name+ ": I'll put his order in...");
-        currentOrder.execute();
-        System.out.println("Here is your order!\n");
+    public void orderUp(){
+        System.out.println("Waitress: Order up!");
+        for(CommandInterface i : customerOrders){
+            cook.makeOrder(i);
+        }
+
+        System.out.println("Here is your order!");
     }
+
+    public ArrayList<CommandInterface> getCustomerOrders(){
+        return customerOrders;
+    }
+
+    public ShortOrderCook getCook(){
+        return cook;
+    }
+
 }

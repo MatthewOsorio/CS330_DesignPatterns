@@ -1,5 +1,5 @@
 public class CreateShakeCommand implements CommandInterface{
-    Shake shake;
+    private Shake shake;
 
     public CreateShakeCommand(Shake shake) {
         this.shake= shake;
@@ -7,5 +7,9 @@ public class CreateShakeCommand implements CommandInterface{
 
     public void execute(){
         shake.blendShake();
+    }
+
+    public Shake getShake(){
+        return shake;
     }
 }
